@@ -1,0 +1,11 @@
+I believe that one of the highest forms of mental activity is play.
+
+Some might disagree, saying instead that a maximized state of focus, dedicated study, or high powered computational processing would represent a peak mental state.  However I would suggest that in all of those cases, the individual is most capable when they are able to interact with those mental states “playfully”.
+
+When I say play, what I mean is an interaction with a material (either physical or conceptual) which is somewhat relaxed, and driven largely by intuition.  There is often, depending on the subject, or the game at hand, a large body of information which must be understood prior to engaging in play.  After all - we can’t really play a game without knowing the rules!  But once that knowledge has been loaded into he mind, and internalized to a sufficient degree, it becomes possible to interact with the material in a way which does not strictly rely on information recollection.  A possible corollary in computer science might be the idea of RAM or active memory... an effective player would have spent time storing the required data into long term memory, in such a way that at the time it is needed, it can be loaded efficiently into active memory and then acted upon without a labourious process of recollection.
+
+However I do also want to suggest that not all play occurs within the context of a game, with rules.  Once can also understand general principles... general properties of the material, and then experiment with the material in a playful way.  This mode is very much aligned with creativity, often generative in nature, but sometimes simply exploratory.  It can be simply playing with a material to expand one’s understanding of it.
+
+The common thing which connects creative, free for play, and play within the context of a game, is that in both cases the mind is relaxed somewhat.  There is less conscious thought, and more reliance on the heuristics and prior knowledge... the instincts which have been built into our self-machine.
+
+Not all games or materials are conducive to this interpretation of the idea of play.  

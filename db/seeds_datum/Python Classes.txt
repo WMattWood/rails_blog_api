@@ -1,0 +1,32 @@
+https://www.knowledgehut.com/blog/programming/self-variabe-python-examples
+
+
+In python, classes are defined via the following syntax
+
+class ClassName:
+
+	# initialization method for instances of the class
+	def __init__(self, arg1, arg2):
+		self.quality = arg1
+		self.other_quality = arg2
+
+	# instance method
+	def my_method(self):
+		#some code
+
+	# class method
+	def class_method():
+		#this can be called by the class
+
+
+
+Throughout the class definition, python uses `self` to reference the instance of the class.  So Instance Variables are referenced as `self.variable`.  Simply declaring the variables with no `self` will define them as class variables shared between all instance of the class.  
+
+This differs from many other languages where instance variables are referenced with `@`.  Additionally, many other languages use `self` to refer to the Class itself within a class definition.  So important to be aware of!
+
+Self must also be explicitly passed to every instance method.
+
+
+***
+
+When we call `instance.method(args)`, it actually translates out to `Class.method(instance, args)`

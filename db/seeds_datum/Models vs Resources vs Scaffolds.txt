@@ -1,0 +1,32 @@
+Models, Resources, and Scaffolds in Ruby On Rails
+
+https://medium.com/@matt.readout/rails-generators-model-vs-resource-vs-scaffold-19d6e24168ee
+
+Model: 
+-creates a db migration file for generating the table in your db `class CreatePosts < ActiveRecord::Migration`
+-creates a model in app/models/post.rb
+`class Post < ApplicationRecord`
+-some test stubs
+
+
+Resource:
+-creates a db migration file
+-creates a Post model
+-creates a Post controller
+-opens up routes in config/routes.rb
+```
+	Rails.application.routes.draw do
+	  resources :users
+	end
+```
+-more tests
+
+
+
+Scaffold: 
+-creates a db migration file
+-creates a Post model
+-creates a Post controller
+-creates a full set of CRUD methods in the Post controller
+-opens up routes in config/routes.rb
+-lots of tests

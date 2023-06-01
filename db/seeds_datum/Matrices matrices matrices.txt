@@ -1,0 +1,17 @@
+
+I’ve encounter matrices many times in the process of solving coding challenges.  I suspect I will need them one day... but I’m not really sure where they will fit in yet!
+
+Nevertheless, I thought it would be interesting to collect a set of methods I find useful for working with matrices.
+
+Representation
+-first off, the basics.  A matrix is commonly stored as a 2-dimensional array, that is - an array containing a set of arrays.  Accessing any cell within this matrix is done via two “coordinate” values, which each represent the index of either the containing array (rows) or the subarray (columns).  Typically matrices will contain subarrays of identical length, although you could have subarrays of varying length as well.
+
+Navigation
+-two nested loops are usually used to walk through the array.  The outer loop steps through the rows (ie. the elements of the outer array) and the inner loop steps through the columns of each row (ie. the elements of each inner array.)
+
+Finding all neighbours
+
+
+Generating sub-matrices (sectors)
+- let’s say you want to treat the matrix as a series of sectors (ie. 9 3x3 sections of a 9x9 grid.). You can derive all coordinates of a given sector by diving any of it’s member coordinates by the sqrt value of your matrix.  (So 3 for a 9x9 matrix, 4 for a 16x16 matrix, etc.). The dividend of this division operation will always correspond to the lowest value coordinate of the given sub-matrix.  You can then simply add (sqrt - 1) to this “lowest coordinate pair” to find the highest coordinate pair.  
+- essentially, we find the upper left coordinate, and then generate all coordinate values of the sub matrix.  

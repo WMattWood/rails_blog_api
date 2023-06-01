@@ -8,7 +8,7 @@
 
 Post.destroy_all
 
-filepath = Rails.root.join("db/seeds_datum/blogtest")
+filepath = Rails.root.join("db/seeds_datum")
 # filepath = Pathname.new("/Users/Delta/Desktop/blogtest")
 
 Dir.each_child( filepath  ) { |filename|

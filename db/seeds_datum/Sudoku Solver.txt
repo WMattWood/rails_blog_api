@@ -1,0 +1,179 @@
+Right off the bat - I must say I was not able to solve this puzzle on my own!  I relied heavily on this article
+by Razwan Rashidi (https://medium.com/isian-blog/solving-sudoku-with-ruby-82ad6d82263d) to guide me through the
+key logic required in making this solution work.  I did try my best to solve it on my own, however the strategy
+I relied on proved to have some flaws.  I’ve done my best below to both describe in my own words how the logic
+of Razwan’s solution works, as well as what I initially tried, and how the two approaches differ.  I’ve also 
+tried to point out what I have learned in the process!
+
+
+This sudoku solver relies on 4 core methods:
+	- find all empty cells in the input matrix
+	- check a row for presence of a given value
+	- check a column for presence of a given value
+	- check a 3x3 grid for presence of a given value
+
+I wanted to try and make the solver capable of solving for any size of sudoku.  To this end I left the `root` 
+variable inside the `check_grid_for_value` method dynamic, setting this value to the square root of the input
+matrix size.  (So for a 9x9 sudoku, the root would be 3... for a 16x16 sudoku the root would be 4 etc.) I also
+put a guard clause at the top of the solver to ensure that the input is square.  One side of the matrix must 
+be a value which is a ‘determinant’ (ie. the sum of a number multiplied by itself ie 4, 9, 16, 25, 36 etc.)
+
+The algorithm which uses these methods is as follows:
+
+#Sudoku Algorithm
+#Find [x, y] coordinates of each blank square in the puzzle and store them in an array
+#Set a counter `idx` to 0
+#While the counter is less than the total number of blank squares in the puzzle...
+	- Set the current square `[x, y]` to coordinates at `idx` of blank squares array
+	- Set the current `guess` to the value of the current square
+	- Set a boolean flag for whether the square is considered ‘solved’ to false
+
+	while `solved` is false & `guess` is less than or equal to the sudoku size...
+		-check if the current `guess` is a valid choice
+			-to determine this, we check the square’s row, column, and grid
+			 in order to see if the guess value is already present
+		-if the guess is a valid choice
+			-set the current square of the puzzle to the guess
+			-set `solved` to true for the current square so we exit our local loop
+			-increment `idx` so that on next loop, we are checking the next
+			 available blank square is the array.
+		-if the guess is not a valid choice
+			-increment the guess by one so we are checking the next number
+	
+	once we have gone through the inner loop completely, we will have either solved for the 
+	current square, or run out of numbers to guess
+
+	if we haven’t solved for the current square
+		-reset the current square to a value of zero (ie. blank)
+		-decrement the `idx` so that on the next loop, we are checking the previous blank
+		 square.  
+
+The logic here is that, given we have not found a solution that works with the current configuration of 
+numbers, we can step back to the previous guess and check all possible remaining numbers in that square.  
+In all cases, if we have a prior chain of guesses which renders a completed solution to the puzzle 
+impossible, we will slowly step back through the puzzle as each successive square “errors out” on a guess 
+of 9.  Eventually we will step back far enough so as to reach to the location of the original faulty “branch”, 
+correct the error (or simply try the next possible guess in sequence), and continue onwards.  Because all 
+of our previously tried blank square are set to 0 as soon as we step back from them, they will have a fresh
+cycle of guesses.  By starting our guesses from the current value of a given square, we ensure that we are 
+not “re guessing” the same set of wrong numbers over and over again within a given possible branch, so we
+avoid getting stuck in an infinite loop.	
+
+
+
+Setting the current `guess` to the value of the current square + 1 was a trick I did not think of myself.
+In my original attempts, I had been trying to make the solution work by resetting each square to 0 when no valid
+number was available.  Looking at the problem now, I see how my approach forced us to prevent repeatedly test 
+values which had already been tried, thus introducing unnecessary time - and possibly infinite loops(?)
+
+I had also been trying to find a solution which relied on looping through an array of possible correct guesses
+for each square.  This not only introduced a small amount of extra processing time to generate an array of guesses
+on each loop, but may also have been the source of infinite loops as well.  To be honest at this time I am not
+100% certain if my “reset to 0” strategy or my “loop through possible correct guesses” strategy produced the 
+infinite loops I was struggling with.  (It may have been both.). However in the end, what I learned is that there
+are some situations which are suited to loops, while others may be better approached by thinking of the problem in
+terms of linearly progressing or regressing steps.  
+
+
+def sudoku(puzzle)
+  
+  # create deep copy of input matrix
+  solution = Marshal.load(Marshal.dump(puzzle))
+  
+  # guard clause to ensure the input matrix is square
+  unless puzzle.size.is_square? && puzzle.all? { |row| row.size == puzzle.size }
+    raise ArgumentError("Puzzle input must be square.")
+  end
+  
+  # helper methods
+  def select_cells(matrix)
+    selected_cells = []
+    
+    for x in 0...matrix.size do
+      for y in 0...matrix.size do
+        selected_cells << [x, y] if yield(matrix[x][y])
+      end
+    end
+    
+    selected_cells
+  end
+  
+  def check_row_for_value(matrix, row, value)
+    for col in 0...matrix.size
+      if matrix[row][col] == value
+        return false 
+      end
+    end 
+    true
+  end
+    
+  def check_col_for_value(matrix, col, value)
+    for row in 0...matrix.size
+      if matrix[row][col] == value 
+        return false
+      end
+    end
+    true
+  end
+    
+  def check_grid_for_value(matrix, row, col, value)
+    root = Math.sqrt(matrix.size).to_i
+    
+    lower_bound_row = root * ( row / root)
+    lower_bound_col = root * ( col / root)
+    upper_bound_row = lower_bound_row + root
+    upper_bound_col = lower_bound_col + root
+    
+    for x in lower_bound_row...upper_bound_row
+      for y in lower_bound_col...upper_bound_col
+        if matrix[x][y] == value 
+          return false
+        end
+      end
+    end
+    
+    true
+  end
+      
+  def is_valid_guess?(matrix, row, col, value)
+    check_row_for_value(matrix, row, value) &&
+    check_col_for_value(matrix, col, value) &&
+    check_grid_for_value(matrix, row, col, value) 
+  end
+  
+  # Execution of solution
+  empty_cells = select_cells(puzzle) { |cell| cell == 0 }
+  solved_count = 0
+  
+  while solved_count < empty_cells.size do
+    
+    row, col = empty_cells[solved_count]
+    guess = solution[row][col] + 1
+    solved = false
+    
+    while solved == false && guess <= 9
+      if is_valid_guess?(solution, row, col, guess)
+        solution[row][col] = guess
+        solved_count += 1
+        solved = true
+        break
+      else
+        guess += 1
+      end
+    end
+    
+    if !solved
+      solution[row][col] = 0
+      solved_count -= 1
+    end
+
+  end
+    
+  solution
+end
+
+class Integer
+  def is_square?
+    Math.sqrt(self) == Math.sqrt(self).floor
+  end
+end

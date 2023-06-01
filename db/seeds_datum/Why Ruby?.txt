@@ -1,0 +1,20 @@
+My strong preference for languages is Ruby, largely because of the methods built into the Hash Class.  Flexibility with hash manipulation, specifically iterative methods, is one of my favourite things about Ruby.  It makes working with data structures feel very smooth and low friction - I can quickly manipulate hashes to try out different traversal patterns.  
+
+This was a surprise to me when I came back to JS.  I had spent several months going deep with Ruby while studying at Launch School, and over time became very fluent in working with arrays and hashes in an intuitive way.  I found I could look at a problem and start playing with various methods to get a grasp on how I could approach the problem.  
+
+With javascript, I found there were a number of small points of friction that required me to use multiple methods to achieve what I would have performed in a single simple statement in Ruby.  
+
+A very simple example - Hash#each.  The Ruby syntax allows for iteration over each key value pair in the calling Hash, calling the provided block with each |k, v| in sequence.  Right away you might point out - “But Matt!  Hashes do not have a sequence!” and you would be technically correct (the best kind of correct). The way Ruby handles this is - under the hood, the #each method returns a new Enumerator object derived from the calling Hash.  This Enumerator in turn is passed in to the provided code block, and it is over this Enumerator object that the code block can iterate sequentially.  The key value pair of each element of the hash can be deconstructed in the provided block’s “block parameters” (the stuff in between the |pipes| are called ‘block parameters’.)  At the completion of this process, the original calling object is returned, thus allowing frictionless chaining of methods if so required.
+
+To me - this is simple and elegant.  The implementation is opinionated, assuming that there would indeed be situations where a coder may wish to iterate over a non-sequential object such as a hash.  And the required conversion from one data type to another is performed quietly in the background, leaving the coder additional mental headroom to direct to the actual problem at hand, rather than these minor implementation details. One small complexity that arises, is that a coder must familiarize themselves with both the Array and Hash class version of the #each method... however the way this has been implemented in Ruby makes the distinctions subtle enough that they are inuitive as long as you remain focused on what type of object you are manipulating.
+
+By contrast, the Javascript solution is slightly more complex.  We are encouraged to remain very conscious of the fact that Objects are not indexed and thus not iterable. Instead, we must call the Object super class’ method #keys or #values, pulling those elements out of the object and creating an iterable Array from them.  This is bothersome in several ways.  Firstly, we must change our syntax pattern completely.
+
+#Ruby
+my_hash = { a: 1, b: 2, c: 3]
+my_hash.each { |k, v| puts k, v }
+
+#Javascript
+myObject = { a: 1, b: 2, c:3 }
+Object.keys(myObject).forEach( k => console.log(k, myObject[k]) ) 
+

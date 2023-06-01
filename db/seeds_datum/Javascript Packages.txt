@@ -1,0 +1,44 @@
+When I first began studying coding 4 years ago - several of my close friends who were currently working in the software and web development industries insisted that my best strategy would be to learn enough to build things, and that the rest of the knowledge base would be things I could learn on the job.
+
+Clearly, the current economic environment is no longer conducive to supporting this type of strategy!  Therefore it falls on my to continue my learning process and absorb as much as possible, hopefully bringing myself up to a competitive level to get “that first job”.
+
+While I haven’t landed that first job yet, I have been lucky enough to get into at least *one* technical test so far.  The test was done in Javascript, and there were a few surprises in this test.  The biggest surprise was the inclusion of a long list of libraries... some of these I was familiar with, but many of them were libraries I’d heard of but never worked with.  
+
+In my work with Javascript so far I have tried to focus on “Vanilla JS”, hoping to strengthen my fundamentals first before delving into libraries.  My plan was to get good at the basics - and then be “moldable putty” for whatever team I would one day join, learning the tricks and techniques specific to that team.  But once again - the job market has changed, so perhaps the better strategy is to do that on-the-job training myself.
+
+The library set provided by the technical test was as follows:
+
+jquery 
+underscore 
+request 
+express 
+jade 
+shelljs 
+passport 
+http 
+sys 
+lodash 
+async 
+mocha 
+moment 
+connect 
+validator 
+restify 
+ejs 
+ws 
+co 
+when 
+helmet 
+wrench 
+brain 
+mustache 
+should 
+backbone 
+forever 
+debug
+
+My hope with this series is to do a little writeup on each library, exploring the features of each one and getting a general familiarity with the methods and techniques they enable.  In particular I am excited about Lodash!  I have heard this one spoken of as being fairly universal, even so far as coming bundled with the (now deprecated) npm-create-react-app package.  Also, as I discuss in my article about my love of the Ruby language, I am excited about getting the ability to iterate easily over objects in Javascript the same way I can with Arrays.
+
+So... here is the start to the series!  Next up - lodash.
+
+ 

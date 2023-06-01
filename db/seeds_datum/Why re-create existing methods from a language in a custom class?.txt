@@ -1,0 +1,11 @@
+If we are creating a new class, we may wish to define methods on that class which correspond to commonly used methods from the language. For example - if our class is designed to manage a collection of some type, we may want to have methods similar to those found on Array or Object/Hash/Dict “key/value” type objects.
+
+One might ask - why not simply use the built in methods from our chosen language?  (ie. #each, #map, #select etc.)  One possible reason has to do with the concept of encapsulation.  Commonly when working within an Object Oriented paradigm, we will want to hide the implementation details, or the internal objects/data, from being accessed directly by the user.  These elements will be typically set to “private”, or “protected” in some way, meaning that only the public methods of that class will have access to them.
+
+There are several benefits to this approach.  It can lead to a cleaner, more intuitive syntax for our users when interacting with the class.  We can also introduce guard clauses into our method definitions to prevent the passing in of objects or data of the wrong “type”.  (See also: Type Enforcement Strategies)
+
+Suppose that at some point in the future, we wanted to change the internal data representation from an array to some other data structure?  If we allowed users to interact directly with the array which stores our data in the class, using native Array methods from our language, we are now stuck with the Array structure... if we change it to anything else, all of the places where our class is referenced will need to update the syntax they use.
+
+In this case it would be beneficial to have our public methods as a kind of “shim” - an interface between any existing code that interacts with our class and the data structure contained within our class.  Rather than needing to update code in all of the places where our class is referenced, we can simply update the relationship between the methods defined on our class and the internal data structure, leaving all of the public methods structured as they are.
+
+Interfaces, interfaces, interfaces!

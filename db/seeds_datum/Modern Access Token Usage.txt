@@ -1,0 +1,21 @@
+As github has done, many orgs and uhhhhhh things/projects/APIs online have decided to move to a more secure alternative to (whatever the fuck github used to use when it was projects(classic).
+
+
+Basically now you want to use access tokens with an expiry date.
+
+Now generating a new token every time can be annoying af, so the standard practice now is that you keep a user-authentication token stored locally, and that gets used to generate per-session access tokens.  
+
+So even if somehow your access token gets shared or accessed... it’s only good for a *little* bit of mayhem.  
+
+
+
+
+The old github projects access token worked like this:
+
+“If you choose to use a personal access token (classic), keep in mind that it will grant access to all repositories within the organizations that you have access to, as well as all personal repositories in your personal account.”
+
+https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+
+Not great!  
+
+The new approach also requires the use of GraphQL - a totally awesome evolution of a classic RESTful API approach.  Where as classic RESTful APIs tend to provide fixed collections of access, the GraphQL approach instead uses a model of the data schema which gets updated (holy shit is this like how React manipulates the DOM relative to the VDOM??)

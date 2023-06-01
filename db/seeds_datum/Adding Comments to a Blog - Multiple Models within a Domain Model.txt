@@ -1,0 +1,23 @@
+https://youtu.be/mpWFrUwAN88?t=802
+
+Adding comments to blog
+Showing the relationship within a domain model between multiple models. 
+Comments will be linked to Posts via a foreign key.
+
+
+
+
+
+https://www.youtube.com/watch?v=mpWFrUwAN88&t=1238s
+
+Adding mailer to notify of comments
+
+
+
+
+
+
+https://www.youtube.com/watch?v=mpWFrUwAN88&t=1462s
+
+Live reactivity (display comments in real time) using hotwire.
+Hotwire can be thought of as React - creates reactivity.
