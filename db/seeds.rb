@@ -13,7 +13,8 @@ filepath = Rails.root.join("db/seeds_datum")
 
 Dir.each_child( filepath  ) { |filename|
     contents = File.read(filepath.join(filename))
-    Post.create(  title: "#{filename}", content: "#{contents}" )
+    title = filename.gsub(".txt", "")
+    Post.create(  title: "#{title}", content: "#{contents}" )
 }
 
 # Post.create( title: "Hi", content: "Check one two, check one two")
