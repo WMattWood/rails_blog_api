@@ -13,7 +13,7 @@ Evan used ruby 1.9.2p180, which is several versions old at the time of writing t
 
 One thing to note is that this particular test is only accounting for Array and Hash objects.  These object types have built in methods in Ruby, which may account for their speed.  Additionally if we are working with more complex object types, the complexity of defining custom rules for handling the nested data structures may end up outweighing the benefits of the improvement in speed, depending on the application.  For the sake of simplicity the Marshal approach may be the most appropriate solution in such contexts where complex (or possibly widely varied) data objects are being handled.  If a middleground is needed, Messagepack can provide a slightly more performant alternative to Marshal, with the tradeoff that we would now be relying on an external package dependency that is not included in the Ruby Standard Library.
 
-
+```ruby
 #!/usr/bin/env ruby
 require 'benchmark'
 require 'yaml'
@@ -61,6 +61,8 @@ Benchmark.bm do |x|
   x.report {iterations.times {dc4(value)}}
   x.report {iterations.times {dc5(value)}}
 end
+```
+
 results in:
 
 user       system     total       real

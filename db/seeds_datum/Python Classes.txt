@@ -3,6 +3,7 @@ https://www.knowledgehut.com/blog/programming/self-variabe-python-examples
 
 In python, classes are defined via the following syntax
 
+```py
 class ClassName:
 
 	# initialization method for instances of the class
@@ -17,7 +18,7 @@ class ClassName:
 	# class method
 	def class_method():
 		#this can be called by the class
-
+```
 
 
 Throughout the class definition, python uses `self` to reference the instance of the class.  So Instance Variables are referenced as `self.variable`.  Simply declaring the variables with no `self` will define them as class variables shared between all instance of the class.  

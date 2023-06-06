@@ -20,6 +20,7 @@ be a value which is a ‘determinant’ (ie. the sum of a number multiplied by i
 
 The algorithm which uses these methods is as follows:
 
+```ruby
 #Sudoku Algorithm
 #Find [x, y] coordinates of each blank square in the puzzle and store them in an array
 #Set a counter `idx` to 0
@@ -47,6 +48,7 @@ The algorithm which uses these methods is as follows:
 		-reset the current square to a value of zero (ie. blank)
 		-decrement the `idx` so that on the next loop, we are checking the previous blank
 		 square.  
+```
 
 The logic here is that, given we have not found a solution that works with the current configuration of 
 numbers, we can step back to the previous guess and check all possible remaining numbers in that square.  
@@ -74,7 +76,7 @@ infinite loops I was struggling with.  (It may have been both.). However in the 
 are some situations which are suited to loops, while others may be better approached by thinking of the problem in
 terms of linearly progressing or regressing steps.  
 
-
+```ruby
 def sudoku(puzzle)
   
   # create deep copy of input matrix
@@ -177,3 +179,4 @@ class Integer
     Math.sqrt(self) == Math.sqrt(self).floor
   end
 end
+```

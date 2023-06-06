@@ -10,11 +10,20 @@ To me - this is simple and elegant.  The implementation is opinionated, assuming
 
 By contrast, the Javascript solution is slightly more complex.  We are encouraged to remain very conscious of the fact that Objects are not indexed and thus not iterable. Instead, we must call the Object super class’ method #keys or #values, pulling those elements out of the object and creating an iterable Array from them.  This is bothersome in several ways.  Firstly, we must change our syntax pattern completely.
 
+```ruby
 #Ruby
 my_hash = { a: 1, b: 2, c: 3]
 my_hash.each { |k, v| puts k, v }
+```
 
-#Javascript
+```javascript
+//Javascript
 myObject = { a: 1, b: 2, c:3 }
 Object.keys(myObject).forEach( k => console.log(k, myObject[k]) ) 
+```
 
+I find the Ruby example extremely easy to read.  It loads into the mind in a rapid way, reducing the lost mental processing overhead that would typically be spent parsing the code visually.
+
+In actuality this is an extremely small factor.  Hash methods?  Who cares!?  But I believe that you can often know a lot about a larger system by looking at a small piece of it.  Look at a rock or a pebble, and you can see a mountain.  Look at a leaf and you can see a tree.  The way that Ruby handles the implementation of "small details" is with careful forethought and attention to the details of the developer/human experience.  I believe that A) this is a fantastic approach to designing a language, and B) the effort and care put into this small detail is reflected throughout the macro structure of the language and the wider ecosystem that surrounds it. 
+
+Thanks Matz!!  <3

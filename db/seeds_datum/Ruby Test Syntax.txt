@@ -1,5 +1,6 @@
 Ruby test syntax
 
+```ruby
 require 'minitest/autorun'
 require "minitest/reporters"
 Minitest::Reporters.use!
@@ -37,3 +38,4 @@ class TodoListTest < MiniTest::Test
     assert_equal(@todo3, @list.last)
   end
 end
+```
