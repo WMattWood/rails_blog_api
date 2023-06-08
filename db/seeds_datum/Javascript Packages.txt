@@ -8,36 +8,36 @@ In my work with Javascript so far I have tried to focus on “Vanilla JS”, hop
 
 The library set provided by the technical test was as follows:
 
-jquery 
-underscore 
-request 
-express 
-jade 
-shelljs 
-passport 
-http 
-sys 
-lodash 
-async 
-mocha 
-moment 
-connect 
-validator 
-restify 
-ejs 
-ws 
-co 
-when 
-helmet 
-wrench 
-brain 
-mustache 
-should 
-backbone 
-forever 
-debug
+- jquery 
+- underscore 
+- request 
+- express 
+- jade 
+- shelljs 
+- passport 
+- http 
+- sys 
+- lodash 
+- async 
+- mocha 
+- moment 
+- connect 
+- validator 
+- restify 
+- ejs 
+- ws 
+- co 
+- when 
+- helmet 
+- wrench 
+- brain 
+- mustache 
+- should 
+- backbone 
+- forever 
+- debug
 
-My hope with this series is to do a little writeup on each library, exploring the features of each one and getting a general familiarity with the methods and techniques they enable.  In particular I am excited about Lodash!  I have heard this one spoken of as being fairly universal, even so far as coming bundled with the (now deprecated) npm-create-react-app package.  Also, as I discuss in my article about my love of the Ruby language, I am excited about getting the ability to iterate easily over objects in Javascript the same way I can with Arrays.
+My hope with this series is to do a little writeup on each library, exploring the features of each one and getting a general familiarity with the methods and techniques they enable.  In particular I am excited about lodash!  I have heard this one spoken of as being fairly universal, even so far as coming bundled with the npm-create-react-app package.  Also, as I discuss in my article about my love of the Ruby language, I am excited about getting the ability to iterate easily over objects in Javascript the same way I can with Arrays.
 
 So... here is the start to the series!  Next up - lodash.
 

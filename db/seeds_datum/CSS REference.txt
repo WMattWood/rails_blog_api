@@ -1,9 +1,0 @@
-Here is a quick reference to the CSS tip blog articles i have written, with associated gists for visual reference.  See the full blog articles for complete explanations.
-
-
-1. Animations
-2. Media Queries in Styled Components
-3. Flex Box templates. (with snippit package to install in VSCode)
-
-4. Using Styled Components
-5. Using GlobalStyle in styled components

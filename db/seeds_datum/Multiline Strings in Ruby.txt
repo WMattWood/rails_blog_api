@@ -18,6 +18,6 @@ This...
 HEREDOC
 ```
 
-If you need to insert this HEREDOC into your code in a position where it is indented (ie. nested inside of a method definition) you can use a squiggly HEREDOC to ignore trailing spaces... `<<~HEREDOC`.
+If you need to insert this HEREDOC into your code in a position where it is indented (ie. nested inside of a method definition) you can use a squiggly HEREDOC to tell Ruby to ignore trailing spaces when the string is parsed. `<<~HEREDOC`.
 
-This is actually an area where Javascript outshines Ruby, allowing a straightforward usage of Template Literals (basically any string bounded by `` backticks) as introduced in ES6.  There is nothing special required to ensure a multiline string, simply press enter and new lines are automatically encoded when using `` backticks.
+In my opinion, thiis is actually an area where Javascript outshines Ruby by allowing a straightforward usage of Template Literals (basically any string bounded by backticks) as introduced in ES6.  There is nothing special required to ensure a multiline string, simply press enter and new lines are automatically encoded when using backticks.  Easy!

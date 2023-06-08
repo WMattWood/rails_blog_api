@@ -1,5 +1,10 @@
 Ruby test syntax
 
+For future reference... here is a quick example of text syntax using Ruby's minitest gem.
+The setup method is great because it will set up the included variables and objects prior to the execution of every subsequent test.  This eliminates the need to instantiate objects to be tested within every test method.  
+
+Methods named with "test_" will be parsed as tests to be run.
+
 ```ruby
 require 'minitest/autorun'
 require "minitest/reporters"

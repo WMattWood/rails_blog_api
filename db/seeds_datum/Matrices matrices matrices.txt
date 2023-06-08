@@ -1,17 +1,56 @@
 
-I’ve encounter matrices many times in the process of solving coding challenges.  I suspect I will need them one day... but I’m not really sure where they will fit in yet!
-
-Nevertheless, I thought it would be interesting to collect a set of methods I find useful for working with matrices.
+I’ve encounter matrices many times in the process of solving coding challenges.  I suspect I will need them one day... but I’m not really sure where they will fit in yet!Nevertheless, I thought it would be interesting to collect a set of methods I find useful for working with matrices.
 
 Representation
--first off, the basics.  A matrix is commonly stored as a 2-dimensional array, that is - an array containing a set of arrays.  Accessing any cell within this matrix is done via two “coordinate” values, which each represent the index of either the containing array (rows) or the subarray (columns).  Typically matrices will contain subarrays of identical length, although you could have subarrays of varying length as well.
+First off, the basics.  A matrix is commonly stored as a 2-dimensional array, that is - an array containing a set of arrays.  Accessing any cell within this matrix is done via two “coordinate” values, where each value represents the index of either the containing array (matrix row position) or the sub-array (matrix column position).  Typically matrices will contain subarrays of identical length, although you could have 2-dimensional arrays which contain subarrays of varying length as well.
 
 Navigation
--two nested loops are usually used to walk through the array.  The outer loop steps through the rows (ie. the elements of the outer array) and the inner loop steps through the columns of each row (ie. the elements of each inner array.)
+Two nested loops are usually used to walk through the array.  The outer loop steps through the rows (ie. the elements of the outer array) and the inner loop steps through the columns of each row (ie. the elements of each inner array.)
 
 Finding all neighbours
 
+```
+# For each position in the array, the neighbours can be found using the following coordinates
+
+array[rowIndex-1][columnIndex-1]
+array[rowIndex-1][columnIndex]
+array[rowIndex-1][columnIndex+1]
+
+array[rowIndex][columnIndex-1]
+array[rowIndex][columnIndex+1]
+
+array[rowIndex+1][columnIndex-1]
+array[rowIndex+1][columnIndex]
+array[rowIndex+1][columnIndex+1]
+```
+
+It may be worth noting that the above approach will result in several null or undefined values when navigating around the outer boundary of the matrix.  One trick (found on StackOverflow) would be to treat the input matrix as a matrix which is 2 degrees larger.
+
+So given an input matrix like this:
+
+```
+6 5 2
+3 1 3
+4 7 9
+```
+
+It would be navigated as:
+
+```
+0 0 0 0 0
+0 6 5 2 0
+0 3 1 3 0
+0 4 7 9 0
+0 0 0 0 0 
+```
+
+There are certain situations (likely those involving summing) where such an approach would be useful, or where it is possible to define a trivial "empty" value which would not affect the containing algorithm.  However in some situations a value of 0 being substituted for an undefined coordinate might be detrimental.
+
 
 Generating sub-matrices (sectors)
-- let’s say you want to treat the matrix as a series of sectors (ie. 9 3x3 sections of a 9x9 grid.). You can derive all coordinates of a given sector by diving any of it’s member coordinates by the sqrt value of your matrix.  (So 3 for a 9x9 matrix, 4 for a 16x16 matrix, etc.). The dividend of this division operation will always correspond to the lowest value coordinate of the given sub-matrix.  You can then simply add (sqrt - 1) to this “lowest coordinate pair” to find the highest coordinate pair.  
-- essentially, we find the upper left coordinate, and then generate all coordinate values of the sub matrix.  
+- let’s say you want to treat the matrix as a series of sub-matrices (ie. 9 3x3 sections of a 9x9 grid). When stepping through a matrix, you can derive each value of a given coordinate pair (ie. each x,y value) for a given sub-matrix by dividing any of it’s member coordinates by the sqrt value of your matrix.  (So 3 for a 9x9 matrix, 4 for a 16x16 matrix, etc). Given whole number division, the dividend of this operation will always correspond to the lowest value coordinate-pair which identifies the provided coordinate's position in the given sub-matrix.  You can then simply add (sqrt - 1) to this “lowest coordinate pair” to find the highest coordinate pair.  
+
+Essentially, we find the upper left coordinate, and then generate all coordinate values of the sub matrix from that coordinate. 
+
+
+That's all for now!

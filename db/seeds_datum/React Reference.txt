@@ -1,7 +1,0 @@
-React Reference
-
-(with gists)
-
-1. Conditional Rendering in JSX
-2. React Functional Component with Export
-3. React Router (show Browser Router and Links)
